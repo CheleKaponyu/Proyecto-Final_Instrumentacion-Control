@@ -9,24 +9,16 @@
   <style>
     :root {
       --primary: #cc1439;
-      --primary-dark: #8a0c28;
       --navy: #132b63;
-      --navy-2: #1c387a;
       --bg: #0d1222;
-      --bg-soft: #11182f;
-      --panel: rgba(255,255,255,.08);
-      --panel-2: rgba(255,255,255,.05);
       --text: #f5f7fb;
       --muted: #c9d1e4;
       --line: rgba(255,255,255,.12);
       --shadow: 0 20px 50px rgba(0,0,0,.25);
       --radius: 22px;
-      --radius-sm: 16px;
       --max: 1180px;
       --success: #2ec27e;
-      --warning: #f6c453;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -39,7 +31,6 @@
         linear-gradient(180deg, #0b1020 0%, #0d1222 40%, #09101d 100%);
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -52,46 +43,24 @@
       mask-image: linear-gradient(to bottom, rgba(0,0,0,.4), transparent 80%);
       z-index: -1;
     }
-
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 86px 0;
-      position: relative;
-    }
-
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 86px 0; position: relative; }
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 14px;
-      font-size: clamp(1.9rem, 3vw, 3rem);
-      line-height: 1.1;
+      display: flex; align-items: center; gap: 12px; margin: 0 0 14px;
+      font-size: clamp(1.9rem, 3vw, 3rem); line-height: 1.1;
     }
-
     .section-title .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
+      width: 14px; height: 14px; border-radius: 999px;
       background: linear-gradient(135deg, var(--primary), #ff5b80);
       box-shadow: 0 0 0 8px rgba(204,20,57,.14);
       flex: 0 0 auto;
     }
-
     .section-lead {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.03rem;
-      line-height: 1.75;
-      margin: 0 0 28px;
+      max-width: 760px; color: var(--muted); font-size: 1.03rem;
+      line-height: 1.75; margin: 0 0 28px;
     }
-
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       border: 1px solid var(--line);
@@ -99,784 +68,226 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
     }
-
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
+      position: sticky; top: 0; z-index: 30;
       background: rgba(8, 12, 24, .76);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
-
     .nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+      min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
     .brand img:first-child {
-      width: 54px;
-      height: 54px;
-      object-fit: contain;
-      border-radius: 14px;
-      background: rgba(255,255,255,.08);
-      padding: 8px;
+      width: 54px; height: 54px; object-fit: contain; border-radius: 14px;
+      background: rgba(255,255,255,.08); padding: 8px;
     }
-
-    .brand img:last-child {
-      width: 170px;
-      object-fit: contain;
-    }
-
-    .brand-text {
-      min-width: 0;
-    }
-
+    .brand img:last-child { width: 170px; object-fit: contain; }
     .brand-text small {
-      display: block;
-      color: #ffb1c1;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      font-size: .7rem;
+      display: block; color: #ffb1c1; letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 4px; font-size: .7rem;
     }
-
     .brand-text strong {
-      display: block;
-      font-size: .98rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      display: block; font-size: .98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
     .nav-links a {
-      padding: 10px 14px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: .95rem;
-      transition: .25s ease;
+      padding: 10px 14px; border-radius: 999px; color: var(--muted); font-size: .95rem; transition: .25s ease;
     }
-
-    .nav-links a:hover {
-      background: rgba(255,255,255,.08);
-      color: white;
-    }
-
-    .hero {
-      padding: 56px 0 26px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-wrap {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .hero-card {
-      padding: 34px;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .nav-links a:hover { background: rgba(255,255,255,.08); color: white; }
+    .hero { padding: 56px 0 26px; position: relative; overflow: hidden; }
+    .hero-wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 26px; align-items: stretch; }
+    .hero-card { padding: 34px; position: relative; overflow: hidden; }
     .hero-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -80px -80px auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(204,20,57,.36), transparent 72%);
+      content: ""; position: absolute; inset: auto -80px -80px auto; width: 260px; height: 260px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(204,20,57,.36), transparent 72%);
       pointer-events: none;
     }
-
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #ffd6df;
-      font-size: .86rem;
-      margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12); color: #ffd6df;
+      font-size: .86rem; margin-bottom: 18px;
     }
-
-    .hero h1 {
-      font-size: clamp(2.1rem, 5vw, 4.6rem);
-      line-height: .98;
-      margin: 0 0 18px;
-    }
-
+    .hero h1 { font-size: clamp(2.1rem, 5vw, 4.6rem); line-height: .98; margin: 0 0 18px; }
     .hero h1 span {
-      display: block;
-      background: linear-gradient(135deg, #fff, #ffc9d5 45%, #8fb0ff 95%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      display: block; background: linear-gradient(135deg, #fff, #ffc9d5 45%, #8fb0ff 95%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
-    .hero p {
-      margin: 0 0 24px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1.04rem;
-      max-width: 760px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
+    .hero p { margin: 0 0 24px; color: var(--muted); line-height: 1.8; font-size: 1.04rem; max-width: 760px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
     .badge {
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: rgba(19,43,99,.42);
-      border: 1px solid rgba(143,176,255,.22);
-      color: #d9e5ff;
-      font-size: .9rem;
+      padding: 10px 13px; border-radius: 999px; background: rgba(19,43,99,.42);
+      border: 1px solid rgba(143,176,255,.22); color: #d9e5ff; font-size: .9rem;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      font-weight: 600;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 20px; border-radius: 999px; font-weight: 600;
+      transition: transform .2s ease; border: 1px solid transparent; cursor: pointer;
     }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #e4436c);
-      color: white;
+      background: linear-gradient(135deg, var(--primary), #e4436c); color: white;
       box-shadow: 0 12px 30px rgba(204,20,57,.28);
     }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.12);
-      color: white;
-    }
-
-    .hero-side {
-      padding: 22px;
-      display: grid;
-      gap: 16px;
-    }
-
+    .btn-secondary { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.12); color: white; }
+    .hero-side { padding: 22px; display: grid; gap: 16px; }
     .meta-card {
-      padding: 18px 18px 16px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 18px;
+      padding: 18px 18px 16px; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.09); border-radius: 18px;
     }
-
-    .meta-card h3 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: .95rem;
-      line-height: 1.5;
-    }
-
-    .meta-list strong {
-      color: white;
-    }
-
+    .meta-card h3 { margin: 0 0 10px; font-size: 1rem; }
+    .meta-list { display: grid; gap: 8px; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+    .meta-list strong { color: white; }
     .logos-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 18px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 18px;
     }
-
-    .logos-row img {
-      object-fit: contain;
-      max-height: 62px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 26px;
-    }
-
+    .logos-row img { object-fit: contain; max-height: 62px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
     .stat {
-      padding: 22px;
-      text-align: center;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
+      padding: 22px; text-align: center; background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08); border-radius: 22px;
     }
-
-    .stat strong {
-      display: block;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      margin-bottom: 6px;
-      color: white;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: .95rem;
-      line-height: 1.4;
-      display: block;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .content-card {
-      padding: 28px;
-    }
-
-    .content-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.3rem;
-    }
-
-    .content-card p, .content-card li {
-      color: var(--muted);
-      line-height: 1.78;
-      font-size: .98rem;
-    }
-
-    .clean-list {
-      display: grid;
-      gap: 12px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .clean-list li {
-      position: relative;
-      padding-left: 30px;
-    }
-
+    .stat strong { display: block; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 6px; color: white; }
+    .stat span { color: var(--muted); font-size: .95rem; line-height: 1.4; display: block; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .content-card { padding: 28px; }
+    .content-card h3 { margin: 0 0 12px; font-size: 1.3rem; }
+    .content-card p, .content-card li { color: var(--muted); line-height: 1.78; font-size: .98rem; }
+    .clean-list { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+    .clean-list li { position: relative; padding-left: 30px; }
     .clean-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--success);
-      font-weight: 700;
+      content: "✔"; position: absolute; left: 0; top: 0; color: var(--success); font-weight: 700;
     }
-
-    .team-grid, .goals-grid, .materials-grid, .results-grid, .docs-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .team-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .goals-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .materials-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .results-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .docs-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
+    .team-grid, .goals-grid, .materials-grid, .results-grid, .docs-grid { display: grid; gap: 18px; }
+    .team-grid { grid-template-columns: repeat(4, 1fr); }
+    .goals-grid { grid-template-columns: repeat(3, 1fr); }
+    .materials-grid { grid-template-columns: repeat(4, 1fr); }
+    .results-grid { grid-template-columns: repeat(4, 1fr); }
+    .docs-grid { grid-template-columns: repeat(4, 1fr); }
     .mini-card {
-      padding: 22px;
-      border-radius: 22px;
+      padding: 22px; border-radius: 22px;
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.10);
-      min-height: 100%;
+      border: 1px solid rgba(255,255,255,.10); min-height: 100%;
     }
-
     .mini-card .num {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      font-weight: 800;
-      background: linear-gradient(135deg, rgba(204,20,57,.95), rgba(19,43,99,.95));
-      margin-bottom: 14px;
+      width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; font-weight: 800;
+      background: linear-gradient(135deg, rgba(204,20,57,.95), rgba(19,43,99,.95)); margin-bottom: 14px;
     }
-
-    .mini-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-    }
-
-    .mini-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.72;
-      font-size: .95rem;
-    }
-
-    .chip-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
+    .mini-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .mini-card p { margin: 0; color: var(--muted); line-height: 1.72; font-size: .95rem; }
+    .chip-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
     .chip {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.09);
-      color: #eef2ff;
-      font-size: .9rem;
+      padding: 10px 12px; border-radius: 999px; background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.09); color: #eef2ff; font-size: .9rem;
     }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-    }
-
+    .timeline { display: grid; gap: 16px; }
     .timeline-item {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 16px;
-      align-items: start;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.05);
+      display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start;
+      padding: 18px; border-radius: 20px; background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.08);
     }
-
     .timeline-item .step {
-      padding: 12px 10px;
-      border-radius: 14px;
-      background: rgba(19,43,99,.45);
-      border: 1px solid rgba(143,176,255,.14);
-      text-align: center;
-      font-weight: 700;
-      color: #dbe7ff;
+      padding: 12px 10px; border-radius: 14px; background: rgba(19,43,99,.45);
+      border: 1px solid rgba(143,176,255,.14); text-align: center; font-weight: 700; color: #dbe7ff;
     }
-
-    .timeline-item h4 {
-      margin: 0 0 8px;
-      font-size: 1.06rem;
-    }
-
-    .timeline-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.72;
-    }
-
-    .code-panel {
-      position: relative;
-      overflow: hidden;
-    }
-
+    .timeline-item h4 { margin: 0 0 8px; font-size: 1.06rem; }
+    .timeline-item p { margin: 0; color: var(--muted); line-height: 1.72; }
+    .code-panel { position: relative; overflow: hidden; }
     .code-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.04);
     }
-
-    .code-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-    }
-
-    .code-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .code-dots span {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      display: block;
-    }
-
+    .code-title { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dots span { width: 12px; height: 12px; border-radius: 999px; display: block; }
     .code-dots span:nth-child(1) { background: #ff5f57; }
     .code-dots span:nth-child(2) { background: #febc2e; }
     .code-dots span:nth-child(3) { background: #28c840; }
-
     .copy-btn {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 600;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: white;
+      padding: 10px 14px; border-radius: 999px; cursor: pointer; font-weight: 600;
     }
-
     pre {
-      margin: 0;
-      padding: 22px;
-      overflow: auto;
-      font-size: .92rem;
-      line-height: 1.65;
-      color: #eef3ff;
-      background: linear-gradient(180deg, rgba(2,6,23,.92), rgba(5,10,25,.98));
+      margin: 0; padding: 22px; overflow: auto; font-size: .92rem; line-height: 1.65;
+      color: #eef3ff; background: linear-gradient(180deg, rgba(2,6,23,.92), rgba(5,10,25,.98));
     }
-
-    .code-note {
-      padding: 20px 22px 24px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-      line-height: 1.78;
-    }
-
-    .gallery-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
+    .code-note { padding: 20px 22px 24px; border-top: 1px solid rgba(255,255,255,.08); color: var(--muted); line-height: 1.78; }
+    .gallery-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
     .filter-btn {
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: .2s ease;
+      border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.06); color: white;
+      padding: 10px 14px; border-radius: 999px; cursor: pointer; transition: .2s ease;
     }
-
-    .filter-btn.active,
-    .filter-btn:hover {
+    .filter-btn.active, .filter-btn:hover {
       background: linear-gradient(135deg, rgba(204,20,57,.95), rgba(19,43,99,.95));
     }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .gallery-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.05);
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: transform .22s ease, border-color .22s ease;
+      position: relative; overflow: hidden; border-radius: 22px; border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.05); cursor: pointer; box-shadow: var(--shadow); transition: transform .22s ease;
     }
-
-    .gallery-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,.18);
-    }
-
-    .gallery-card .media {
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      background: #0a1020;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s ease;
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.04);
-    }
-
-    .gallery-card .caption {
-      padding: 15px 16px 18px;
-    }
-
-    .gallery-card .caption strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .gallery-card .caption span {
-      color: var(--muted);
-      font-size: .92rem;
-      line-height: 1.55;
-    }
-
-    .poster-layout {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 22px;
-      align-items: center;
-    }
-
+    .gallery-card:hover { transform: translateY(-4px); }
+    .gallery-card .media { aspect-ratio: 4 / 3; overflow: hidden; background: #0a1020; }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .gallery-card:hover img { transform: scale(1.04); }
+    .gallery-card .caption { padding: 15px 16px 18px; }
+    .gallery-card .caption strong { display: block; margin-bottom: 4px; }
+    .gallery-card .caption span { color: var(--muted); font-size: .92rem; line-height: 1.55; }
+    .poster-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; align-items: center; }
     .poster-frame {
-      padding: 14px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(204,20,57,.2), rgba(19,43,99,.2));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
+      padding: 14px; border-radius: 28px; background: linear-gradient(135deg, rgba(204,20,57,.2), rgba(19,43,99,.2));
+      border: 1px solid rgba(255,255,255,.12); box-shadow: var(--shadow);
     }
-
-    .poster-frame img {
-      border-radius: 18px;
-      width: 100%;
-      max-height: 760px;
-      object-fit: contain;
-      background: white;
-    }
-
+    .poster-frame img { border-radius: 18px; width: 100%; max-height: 760px; object-fit: contain; background: white; }
     .doc-card {
-      padding: 24px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.10);
+      padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.10);
       background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: flex; flex-direction: column; gap: 12px;
     }
-
     .doc-icon {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      font-weight: 900;
-      background: rgba(255,255,255,.09);
+      width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px;
+      font-weight: 900; background: rgba(255,255,255,.09);
     }
-
-    .doc-card h3 {
-      margin: 0;
-      font-size: 1.08rem;
-    }
-
-    .doc-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.72;
-      font-size: .95rem;
-      flex: 1;
-    }
-
-    .doc-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .doc-actions a {
-      padding: 11px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: .92rem;
-    }
-
-    .doc-actions a.primary {
-      background: linear-gradient(135deg, var(--primary), #e4436c);
-      color: white;
-    }
-
-    .doc-actions a.secondary {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.1);
-    }
-
-    .footer {
-      padding: 36px 0 50px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-    }
-
-    .footer-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer strong {
-      color: white;
-    }
-
+    .doc-card h3 { margin: 0; font-size: 1.08rem; }
+    .doc-card p { margin: 0; color: var(--muted); line-height: 1.72; font-size: .95rem; flex: 1; }
+    .doc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .doc-actions a { padding: 11px 14px; border-radius: 999px; font-weight: 600; font-size: .92rem; }
+    .doc-actions a.primary { background: linear-gradient(135deg, var(--primary), #e4436c); color: white; }
+    .doc-actions a.secondary { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); }
+    .footer { padding: 36px 0 50px; border-top: 1px solid rgba(255,255,255,.08); color: var(--muted); }
+    .footer-wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer strong { color: white; }
     .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 7, 18, .88);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      z-index: 100;
+      position: fixed; inset: 0; background: rgba(3, 7, 18, .88); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center; padding: 24px; z-index: 100;
     }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox-inner {
-      max-width: min(1100px, 100%);
-      max-height: 100%;
-      display: grid;
-      gap: 14px;
-    }
-
+    .lightbox.open { display: flex; }
+    .lightbox-inner { max-width: min(1100px, 100%); max-height: 100%; display: grid; gap: 14px; }
     .lightbox img {
-      max-width: 100%;
-      max-height: 78vh;
-      object-fit: contain;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: #060b18;
+      max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12); background: #060b18;
     }
-
-    .lightbox-caption {
-      color: white;
-      text-align: center;
-      line-height: 1.6;
-    }
-
+    .lightbox-caption { color: white; text-align: center; line-height: 1.6; }
     .close-lightbox {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.10);
-      color: white;
-      cursor: pointer;
-      font-size: 1.2rem;
+      position: absolute; top: 18px; right: 18px; width: 48px; height: 48px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.10); color: white; cursor: pointer; font-size: 1.2rem;
     }
-
     @media (max-width: 1080px) {
-      .hero-wrap,
-      .grid-2,
-      .poster-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .goals-grid,
-      .materials-grid,
-      .results-grid,
-      .docs-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .hero-wrap, .grid-2, .poster-layout { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .goals-grid, .materials-grid, .results-grid, .docs-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 700px) {
-      .nav {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 12px 0 14px;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
-
-      .brand {
-        flex-wrap: wrap;
-      }
-
-      .hero-card,
-      .hero-side,
-      .content-card {
-        padding: 22px;
-      }
-
-      .stats,
-      .team-grid,
-      .goals-grid,
-      .materials-grid,
-      .results-grid,
-      .docs-grid,
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item .step {
-        width: fit-content;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
+      .nav { flex-direction: column; align-items: stretch; padding: 12px 0 14px; }
+      .nav-links { justify-content: flex-start; }
+      .brand { flex-wrap: wrap; }
+      .hero-card, .hero-side, .content-card { padding: 22px; }
+      .stats, .team-grid, .goals-grid, .materials-grid, .results-grid, .docs-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .timeline-item .step { width: fit-content; }
+      .section { padding: 72px 0; }
     }
   </style>
 </head>
@@ -1120,38 +531,14 @@
           <div class="content-card panel">
             <h3>Materiales principales</h3>
             <div class="materials-grid">
-              <div class="mini-card">
-                <h3>Arduino Uno</h3>
-                <p>Microcontrolador encargado del procesamiento y ejecución de la lógica.</p>
-              </div>
-              <div class="mini-card">
-                <h3>DHT22</h3>
-                <p>Sensor usado para la lectura de temperatura dentro del prototipo final.</p>
-              </div>
-              <div class="mini-card">
-                <h3>LDR</h3>
-                <p>Elemento propuesto para monitorear el nivel de iluminación del entorno.</p>
-              </div>
-              <div class="mini-card">
-                <h3>L298N</h3>
-                <p>Puente H que permitió controlar el motor sin afectar al Arduino.</p>
-              </div>
-              <div class="mini-card">
-                <h3>Motor DC</h3>
-                <p>Actuador representativo de la respuesta del sistema.</p>
-              </div>
-              <div class="mini-card">
-                <h3>Protoboard</h3>
-                <p>Base del montaje físico junto con jumpers, resistencias y pulsadores.</p>
-              </div>
-              <div class="mini-card">
-                <h3>Multímetro</h3>
-                <p>Usado para verificar el voltaje de salida durante las pruebas.</p>
-              </div>
-              <div class="mini-card">
-                <h3>Fuente variable</h3>
-                <p>Se ajustó a 7 V para lograr una operación estable del sistema.</p>
-              </div>
+              <div class="mini-card"><h3>Arduino Uno</h3><p>Microcontrolador encargado del procesamiento y ejecución de la lógica.</p></div>
+              <div class="mini-card"><h3>DHT22</h3><p>Sensor usado para la lectura de temperatura dentro del prototipo final.</p></div>
+              <div class="mini-card"><h3>LDR</h3><p>Elemento propuesto para monitorear el nivel de iluminación del entorno.</p></div>
+              <div class="mini-card"><h3>L298N</h3><p>Puente H que permitió controlar el motor sin afectar al Arduino.</p></div>
+              <div class="mini-card"><h3>Motor DC</h3><p>Actuador representativo de la respuesta del sistema.</p></div>
+              <div class="mini-card"><h3>Protoboard</h3><p>Base del montaje físico junto con jumpers, resistencias y pulsadores.</p></div>
+              <div class="mini-card"><h3>Multímetro</h3><p>Usado para verificar el voltaje de salida durante las pruebas.</p></div>
+              <div class="mini-card"><h3>Fuente variable</h3><p>Se ajustó a 7 V para lograr una operación estable del sistema.</p></div>
             </div>
           </div>
         </div>
@@ -1168,29 +555,10 @@
         </p>
 
         <div class="results-grid">
-          <article class="mini-card">
-            <div class="num">✓</div>
-            <h3>Operación estable</h3>
-            <p>El prototipo respondió de forma correcta una vez integrado el puente H y ajustada la fuente.</p>
-          </article>
-
-          <article class="mini-card">
-            <div class="num">7V</div>
-            <h3>Fuente validada</h3>
-            <p>El sistema mostró un comportamiento estable con una alimentación ajustada a 7 V.</p>
-          </article>
-
-          <article class="mini-card">
-            <div class="num">PWM</div>
-            <h3>Control gradual</h3>
-            <p>La velocidad del motor cambió por niveles de temperatura, evitando un control todo o nada.</p>
-          </article>
-
-          <article class="mini-card">
-            <div class="num">SER</div>
-            <h3>Monitoreo en tiempo real</h3>
-            <p>El monitor serial y el serial plotter sirvieron para seguir el estado del sistema durante las pruebas.</p>
-          </article>
+          <article class="mini-card"><div class="num">✓</div><h3>Operación estable</h3><p>El prototipo respondió de forma correcta una vez integrado el puente H y ajustada la fuente.</p></article>
+          <article class="mini-card"><div class="num">7V</div><h3>Fuente validada</h3><p>El sistema mostró un comportamiento estable con una alimentación ajustada a 7 V.</p></article>
+          <article class="mini-card"><div class="num">PWM</div><h3>Control gradual</h3><p>La velocidad del motor cambió por niveles de temperatura, evitando un control todo o nada.</p></article>
+          <article class="mini-card"><div class="num">SER</div><h3>Monitoreo en tiempo real</h3><p>El monitor serial y el serial plotter sirvieron para seguir el estado del sistema durante las pruebas.</p></article>
         </div>
       </div>
     </section>
@@ -1211,7 +579,7 @@
             </div>
             <button class="copy-btn" id="copyCode">Copiar código</button>
           </div>
-          <pre><code id="projectCode">#include &lt;DHT.h&gt;
+<pre><code id="projectCode">#include &lt;DHT.h&gt;
 
 // ----------- DHT22 -----------
 #define DHTPIN 2
@@ -1237,7 +605,6 @@ void setup() {
 }
 
 void loop() {
-
   float temp = dht.readTemperature();
 
   if (isnan(temp)) {
@@ -1263,7 +630,6 @@ void loop() {
 
   // Convertir a PWM
   velocidadPWM = (porcentaje / 100.0) * 255;
-
   analogWrite(ENA, velocidadPWM);
 
   // -------- SERIAL PLOTTER --------
@@ -1312,47 +678,38 @@ void loop() {
             <div class="media"><img src="foto_montaje_principal.png" alt="Montaje principal"></div>
             <div class="caption"><strong>Montaje principal</strong><span>Vista general del sistema armado sobre la mesa de trabajo.</span></div>
           </article>
-
           <article class="gallery-card" data-category="montaje" data-title="Montaje lateral del prototipo" data-description="Otra vista del circuito ya construido y en funcionamiento.">
             <div class="media"><img src="foto_montaje_lateral.png" alt="Montaje lateral"></div>
             <div class="caption"><strong>Montaje lateral</strong><span>Detalle del cableado y la integración del actuador con la etapa de potencia.</span></div>
           </article>
-
           <article class="gallery-card" data-category="montaje" data-title="Prueba de aplicación de calor" data-description="Se aplicó calor cerca del sensor para observar la respuesta del sistema y el cambio en la velocidad del motor.">
             <div class="media"><img src="foto_prueba_calor.png" alt="Prueba de calor"></div>
             <div class="caption"><strong>Prueba con calor</strong><span>Validación práctica del comportamiento ante un cambio de temperatura.</span></div>
           </article>
-
           <article class="gallery-card" data-category="medicion" data-title="Medición de voltaje - vista general" data-description="Medición realizada con multímetro durante la validación del prototipo.">
             <div class="media"><img src="foto_medicion_general_1.png" alt="Medición general 1"></div>
             <div class="caption"><strong>Medición general 1</strong><span>Verificación del comportamiento eléctrico del sistema.</span></div>
           </article>
-
           <article class="gallery-card" data-category="medicion" data-title="Multímetro con lectura de 15.41 V" data-description="Captura cercana del valor leído durante una de las pruebas con el circuito.">
             <div class="media"><img src="foto_multimetro_1541.png" alt="Multímetro 15.41 V"></div>
             <div class="caption"><strong>Lectura 15.41 V</strong><span>Registro cercano del multímetro en una condición de prueba.</span></div>
           </article>
-
           <article class="gallery-card" data-category="medicion" data-title="Medición de voltaje - segunda vista" data-description="Otra comprobación del voltaje y del comportamiento del actuador con el sistema en funcionamiento.">
             <div class="media"><img src="foto_medicion_general_2.png" alt="Medición general 2"></div>
             <div class="caption"><strong>Medición general 2</strong><span>Prueba adicional con el sistema operando.</span></div>
           </article>
-
           <article class="gallery-card" data-category="medicion" data-title="Multímetro con lectura de 25.38 V" data-description="Captura cercana de otra lectura registrada durante la validación del montaje.">
             <div class="media"><img src="foto_multimetro_2538.png" alt="Multímetro 25.38 V"></div>
             <div class="caption"><strong>Lectura 25.38 V</strong><span>Otra referencia visual de las pruebas eléctricas.</span></div>
           </article>
-
           <article class="gallery-card" data-category="simulacion" data-title="Monitor serial de Arduino" data-description="Datos de temperatura y porcentaje de velocidad mostrados en tiempo real desde el programa.">
             <div class="media"><img src="captura_serial_monitor.png" alt="Monitor serial"></div>
             <div class="caption"><strong>Monitor serial</strong><span>Salida de datos usada para verificar el comportamiento del sistema.</span></div>
           </article>
-
           <article class="gallery-card" data-category="simulacion" data-title="Gráfica del serial plotter" data-description="Visualización de temperatura y valores de referencia generados por el código del proyecto.">
             <div class="media"><img src="grafica_serial_plotter_1.png" alt="Gráfica serial plotter 1"></div>
             <div class="caption"><strong>Serial plotter 1</strong><span>Gráfica de referencia observada durante la prueba.</span></div>
           </article>
-
           <article class="gallery-card" data-category="simulacion" data-title="Segunda gráfica del serial plotter" data-description="Otra captura del comportamiento de la temperatura y los límites enviados por el programa.">
             <div class="media"><img src="grafica_serial_plotter_2.png" alt="Gráfica serial plotter 2"></div>
             <div class="caption"><strong>Serial plotter 2</strong><span>Cambio visual en la gráfica a partir de otra condición de prueba.</span></div>
@@ -1400,8 +757,7 @@ void loop() {
       <div class="container">
         <h2 class="section-title"><span class="dot"></span> Material del proyecto</h2>
         <p class="section-lead">
-          En esta sección se encuentra el informe final, la propuesta inicial, la presentación final y el póster.
-          Para el PDF y los PowerPoint, reemplaza los enlaces con tus links de Google Drive.
+          En esta sección se encuentra el informe final, la presentación final y el póster del proyecto.
         </p>
 
         <div class="docs-grid">
@@ -1413,8 +769,8 @@ void loop() {
               recomendaciones, anexos y código del proyecto.
             </p>
             <div class="doc-actions">
-              <a class="primary" href="#" target="_blank">Pegar link de Drive</a>
-              <a class="secondary" href="#" target="_blank">Abrir</a>
+              <a class="primary" href="informe_final.pdf" target="_blank">Abrir</a>
+              <a class="secondary" href="informe_final.pdf" download>Descargar</a>
             </div>
           </article>
 
@@ -1422,12 +778,11 @@ void loop() {
             <div class="doc-icon">PPT</div>
             <h3>Propuesta inicial</h3>
             <p>
-              Presentación utilizada para plantear el alcance, la arquitectura del sistema,
-              la lógica de control y las recomendaciones técnicas del proyecto.
+              La propuesta inicial no fue subida al repositorio, por lo que este material no está disponible.
             </p>
             <div class="doc-actions">
-              <a class="primary" href="#" target="_blank">Pegar link de Drive</a>
-              <a class="secondary" href="#" target="_blank">Abrir archivo</a>
+              <a class="primary" href="javascript:void(0)">No disponible</a>
+              <a class="secondary" href="javascript:void(0)">No disponible</a>
             </div>
           </article>
 
@@ -1439,8 +794,8 @@ void loop() {
               con puente H y la validación del sistema.
             </p>
             <div class="doc-actions">
-              <a class="primary" href="#" target="_blank">Pegar link de Drive</a>
-              <a class="secondary" href="#" target="_blank">Abrir archivo</a>
+              <a class="primary" href="presentacion_final.pptx" target="_blank">Abrir archivo</a>
+              <a class="secondary" href="presentacion_final.pptx" download>Descargar</a>
             </div>
           </article>
 
@@ -1468,25 +823,10 @@ void loop() {
         </p>
 
         <div class="team-grid">
-          <article class="mini-card">
-            <h3>Fredy Alexander Mejía</h3>
-            <p>Cuenta: 62051256</p>
-          </article>
-
-          <article class="mini-card">
-            <h3>Kevin Alexander Hernández</h3>
-            <p>Cuenta: 61811772</p>
-          </article>
-
-          <article class="mini-card">
-            <h3>Mario Alberto Martínez Palma</h3>
-            <p>Cuenta: 62311315</p>
-          </article>
-
-          <article class="mini-card">
-            <h3>Victor David Lovo Zaldivar</h3>
-            <p>Cuenta: 62111478</p>
-          </article>
+          <article class="mini-card"><h3>Fredy Alexander Mejía</h3><p>Cuenta: 62051256</p></article>
+          <article class="mini-card"><h3>Kevin Alexander Hernández</h3><p>Cuenta: 61811772</p></article>
+          <article class="mini-card"><h3>Mario Alberto Martínez Palma</h3><p>Cuenta: 62311315</p></article>
+          <article class="mini-card"><h3>Victor David Lovo Zaldivar</h3><p>Cuenta: 62111478</p></article>
         </div>
       </div>
     </section>
